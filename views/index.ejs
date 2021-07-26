@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+ <head>
+  <title>vis.js Graph demo</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.20.1/vis.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.20.1/vis.min.css" rel="stylesheet" type="text/css" /> 
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ </head>
+
+ <body>
+ <div style="width:40vw;height:50vh" id="graph"></div> 
+<script>
+var container = document.getElementById('graph');
+var options = {
+  physics: false,
+  clickToUse: false,
+  nodes: {
+    labelHighlightBold: false,
+    font: {
+      size: 14,
+      color: '#fff'
+    }
+  },
+  edges: {
+    smooth: {
+    type: 'vertical',
+    forceDirection: 'vertical',
+    roundness: 0.5
+    }
+  },
+  layout: {
+    randomSeed: 0
+  }
+}
+var cfgData = { edges: <%-JSON.stringify(edges)%>, nodes: <%-JSON.stringify(nodes)%> };
+var cfgOutput = new vis.Network(container, cfgData, options);
+</script>
+  
+</body>
+</html>
